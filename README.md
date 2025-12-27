@@ -12,23 +12,24 @@ Projet IA – Prédiction du budget total pour l'organisation d'un évenement
 
 2. Structure du projet
 
-    ├─ app/projet IA #Jupiter notebook 
-    projet_ia/
-    ├─ app/
-    │  ├─ main.py           # Point d’entrée de l’API FastAPI
-    │  ├─ model_loader.py   # Chargement du modèle ML
-    │  ├─ preprocessing.py  # Pré-traitement des données
-    │  ├─ logger.py         # Logging des prédictions et erreurs
-    │  └─ templates/
-    │      └─ form.html     # Formulaire HTML pour les tests
-    ├─ models/
-    │  └─ model.pkl      # Modèle ML entraîné
-    ├─ tests/
-    │  └─ test_api.py       # Tests unitaires (optionnel)
-    ├─ Dockerfile           # Instructions pour containeriser l’API
-    ├─ requirements.txt     # Dépendances Python
-    ├─ .env                 # Variables d’environnement 
-    └─ README.md            # Ce fichier
+
+        ├─ app/projet IA #Jupiter notebook 
+        projet_ia/
+        ├─ app/
+        │  ├─ main.py           # Point d’entrée de l’API FastAPI
+        │  ├─ model_loader.py   # Chargement du modèle ML
+        │  ├─ preprocessing.py  # Pré-traitement des données
+        │  ├─ logger.py         # Logging des prédictions et erreurs
+        │  └─ templates/
+        │      └─ form.html     # Formulaire HTML pour les tests
+        ├─ models/
+        │  └─ model.pkl      # Modèle ML entraîné
+        ├─ tests/
+        │  └─ test_api.py       # Tests unitaires (optionnel)
+        ├─ Dockerfile           # Instructions pour containeriser l’API
+        ├─ requirements.txt     # Dépendances Python
+        ├─ .env                 # Variables d’environnement 
+        └─ README.md            # Ce fichier
 
 
 3. Exécution locale de l’API
