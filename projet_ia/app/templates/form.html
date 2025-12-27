@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prédiction Budget</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f3f6fa;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    form {
+        background: white;
+        padding: 25px 35px;
+        border-radius: 12px;
+        width: 650px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* GRID 2 COLONNES */
+    .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px 25px;
+        margin-top: 10px;
+    }
+
+    /* Pour les champs qui occupent toute la largeur */
+    .full-width {
+        grid-column: span 2;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #444;
+    }
+
+    input, select {
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        outline: none;
+        width: 100%;
+        font-size: 15px;
+        transition: 0.2s;
+    }
+
+    input:focus, select:focus {
+        border-color: #4a90e2;
+        box-shadow: 0 0 6px rgba(74, 144, 226, 0.4);
+    }
+
+    button {
+        margin-top: 25px;
+        padding: 12px;
+        border-radius: 8px;
+        background: #4a90e2;
+        color: white;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #3f7ccc;
+    }
+
+    .result-box {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        background: #e8f4ff;
+        color: #1e4f7b;
+        text-align: center;
+        font-weight: bold;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+</style>
+
+</head>
+<body>
+
+<div>
+    <h2>Estimation du Budget Total</h2>
+
+    <form method="post" action="/predict">
+
+        <div class="grid-2">
+
+            <!-- Ligne complète -->
+            <div class="full-width">
+                <label>Type d'événement :</label>
+                <select name="Event_Type" required>
+                    <option value="Concert">Concert</option>
+                    <option value="Festival">Festival</option>
+                    <option value="Conference">Conférence</option>
+                    <option value="Sport">Événement sportif</option>
+                    <option value="Other">Autre</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Capacité du lieu :</label>
+                <input type="number" name="Venue_Capacity"  step=1 required>
+            </div>
+
+            <div>
+                <label>Budget marketing :</label>
+                <input type="number" name="Marketing_Budget"  step="any"  required>
+            </div>
+
+            <div>
+                <label>Billets prévendus :</label>
+                <input type="number" name="Pre_sale_Tickets"  step="any" required>
+            </div>
+
+            <div>
+                <label>Participation attendue :</label>
+                <input type="number" name="Expected_Attendance"  step=1 required>
+            </div>
+
+            <div>
+                <label>Participation historique :</label>
+                <input type="number" name="Historical_Attendance_Similar_Events"  step=1 required>
+            </div>
+
+            <div>
+                <label>Coût de location du lieu :</label>
+                <input type="number" name="Venue_Rental_Cost"  step="any" required>
+            </div>
+
+            <div>
+                <label>Coût du personnel :</label>
+                <input type="number" name="Staff_Cost"  step="any" required>
+            </div>
+
+            <div>
+                <label>Coût scène & équipement :</label>
+                <input type="number" name="Stage_and_Equipment_Cost" step="any" required>
+            </div>
+
+            <div>
+                <label>Coût permis & licences :</label>
+                <input type="number" name="Permits_and_Licenses_Cost"  step="any" required >
+            </div>
+
+        </div>
+
+        <button type="submit">Prédire</button>
+
+    </form>
+
+    {% if prediction %}
+        <div class="result-box">
+            Budget total estimé : {{ prediction }} $
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
